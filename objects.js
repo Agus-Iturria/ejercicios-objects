@@ -107,7 +107,7 @@ console.log(getCharacterAbility(personaje, "agilidad"))
 function quantityAbilities(personaje){
     return personaje.habilidades.length
 }
-console.log(quantityAbilites(personaje))
+console.log(quantityAbilities(personaje))
 
 //14.Añade una propiedad Aliados que sea un array de nombres de aliados y accede a ese array por medio de notación de punto o corchetes.
 personaje.aliados = ['Pijurria']
