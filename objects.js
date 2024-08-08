@@ -154,9 +154,7 @@ console.log(getCharacterClass(personaje, "Guerrero"))
 
 //20. Crea una función que reciba a Personaje, el nombre de una propiedad (como "Edad", "Clase", etc.), y un nuevo valor para esa propiedad. La función debe actualizar lapropiedad del objeto Personaje con el nuevo valor proporcionado sin usar métodos avanzados.
 function updateProperty(personaje, property, newValue){
-    if (personaje.includes(property)){
-        personaje[property] = newValue;
-        return personaje
-    }
+    personaje[property] = newValue;
+    return personaje
 }
 console.log(updateProperty(personaje, 'arma', 'espada'))
