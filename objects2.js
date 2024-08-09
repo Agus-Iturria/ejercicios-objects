@@ -114,8 +114,6 @@ let guestsList = event.guests;
 let confirmedGuests = guestsList.filter(function(guest){return guest.confirm === true}).map(function(guest){return guest.name})
 console.log(eventName, confirmedGuests)
 
-
-
 //5.Crear un objeto banda con las propiedades nombre, genero, y miembros (que es un array de objetos con propiedades nombre, instrumento, y experiencia (en años)). Luego extraer el nombre del género y los instrumentos de los miembros con más de 5 años de experiencia.
 const band = {
     name: 'Slipknot',
@@ -186,19 +184,18 @@ console.log(matchCharacters(charactersAndKindoms))
 
 
 //4.Crear una función resumenPersonajes que reciba un array de objetos personajes donde cada objeto tiene una propiedad info que a su vez es un objeto con propiedades nombre, edad, y reino. Devuelve un nuevo objeto resumen con propiedades nombres (array de nombres) y edadesMayores (array de edades mayores a 30). Si algún personaje tiene edad mayor a 40, agregar 'mayoresDe40' a un array categorias.
-let newCharacter =[
+let newCharacters =[
     { info: { name: 'Shrek', age: 35, kingdom: 'Pantano' } },
     { info: { name: 'Fiona', age: 28, kingdom: 'Duloc' } },
     { info: { name: 'Rey Harold', age: 45, kingdom: 'Far Far Away' } }
   ]
 
-function resumenPersonajes(characters){
+function charactersSummary(characters){
     const summary = {
         names: characters.map(function(character){return character.info.name}),
         olderAges: characters.map(function(character){return character.info.age}).filter(function(character)
         {return character.info.age > 30}),
     }
-    
     if (summary.olderAges.some(function(age){
         return age.age > 40
     })) {
@@ -206,10 +203,73 @@ function resumenPersonajes(characters){
     }
     return summary
 }
-console.log(resumenPersonajes(newCharacter))
+//console.log(charactersSummary(newCharacters))
+
+//PARTE 4. SPREAD OPERATOR
+//1.Crea una función agregarHobbies que reciba dos objetos persona y nuevosHobbies. El objeto persona tiene propiedades nombre, edad, y hobbies (un array de hobbies). El objeto nuevosHobbies tiene una propiedad hobbies que también es un array de nuevos hobbies. Usa el spread operator para combinar el array hobbies de persona con el array hobbies de nuevosHobbies en un nuevo objeto personaActualizada. Devuelve personaActualizada.
+let person = {
+    name:'Ricardo',
+    age: 28,
+    hobbies:['Reading', 'Fishing'],
+} 
+let newHobbies = {
+    hobbies: ['Baking', 'Golf']
+}
+
+function addHobbies(person, hobbies){
+    const updatedPerson = {...person, hobbies:[...person.hobbies, ...hobbies.hobbies]}
+    return updatedPerson
+}
+console.log(addHobbies(person, newHobbies))
+
+//2.Crea una función actualizarDatos que reciba dos objetos datosPersonales y datosContacto. El objeto datosPersonales tiene propiedades nombre y edad, y el objeto datosContacto tiene propiedades direccion y telefono. Usa el spread operator para combinar ambos objetos en un nuevo objeto informacionCompleta. Devuelve informacionCompleta.
+let personalData={
+    name:'Andres',
+    age:'34'
+}
+
+let contactData={
+    address:'Antonio-Del-Valle 333',
+    phoneNumber:'1122334455',
+}
+
+function updateData(personalData, contactData){
+    const completeInformation ={...personalData, ...contactData}
+    return completeInformation
+}
+console.log(updateData(personalData,  contactData))
+
+//3.Crea una función agregarCaracteristicas que reciba dos objetos vehiculo y caracteristicas. El objeto vehiculo tiene propiedades marca y modelo, y el objeto caracteristicas tiene propiedades color y tipo. Usa el spread operator para combinar estos objetos en un nuevo objeto vehiculoCompleto. Devuelve vehiculoCompleto, agregando las propiedades de caracteristicas solo si el color es 'rojo'.
+let vehicle ={
+    carBrand:'Toyota',
+    carModel:'Corola',
+}
+let characteristics={
+    color:'Red',
+    type:'Car',
+}
+function addCharacteristic(vehicle,characteristics){
+    if(characteristics.color === 'Red'){
+        const completeVehivle = {...vehicle, ...characteristics}
+        return completeVehivle
+    }
+}
+console.log(addCharacteristic(vehicle, characteristics))
+
+//4.Crea una función eliminarTelefono que reciba un objeto persona y elimine explícitamente la propiedad telefono del objeto. Usa el spread operator para crear un nuevo objeto personaSinTelefono que contenga todas las propiedades del objeto original persona excepto telefono. Devuelve personaSinTelefono.
+let person2 ={
+    name:'Javier',
+    age:50,
+    address:'JavbierLandia',
+    phoneNumber:'1222113413',
+}
+function eliminatePhoneNumber(person){
+    const {phoneNumber, ...personWithoutPhoneNumber} = person
+    return personWithoutPhoneNumber
+}
+console.log(eliminatePhoneNumber(person2))
 
   
-
 
 
 
