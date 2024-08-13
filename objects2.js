@@ -269,7 +269,115 @@ function eliminatePhoneNumber(person){
 }
 console.log(eliminatePhoneNumber(person2))
 
-  
+//PARTE 5
+//1.Crea una función combinacionPersonajes que reciba dos objetos personajes1 y personajes2, donde personajes1 tiene propiedades nombre y habilidades (un array de habilidades), y personajes2 tiene propiedades nombre y atributos (un objeto con fuerza y destreza). Usa el spread operator para combinar habilidades y atributos en un solo objeto informacion, y devuelve un nuevo objeto con el nombre y el objeto informacion combinado.
+let character1 = {
+    name: 'Guerrero',
+    habilities:['Espada', 'Escudo']
+}
+let character2 = {
+    name: 'Guerrero',
+    attributes:{ fuerza: 90, destreza: 80 }
+}
+function characterCombination(character1, character2) {
+    let information = {
+        habilities: [...character1.habilities],
+        attributes: { ...character2.attributes }
+    }
+    return {
+        name: character1.name,
+        information
+    }
+}
+console.log(characterCombination(character1, character2));
+
+//2.Crea una función combinarClientes que reciba dos objetos cliente1 y cliente2, donde cliente1 tiene propiedades nombre y datos (un objeto con edad y direccion), y cliente2 tiene propiedades nombre y informacion (un objeto con telefono y email). Usa el spread operator para combinar datos y informacion en un solo objeto perfilCompleto, y devuelve un nuevo objeto con el nombre y el objeto perfilCompleto.
+let client1 = {
+    name: 'Juan',
+    data:{edad: 30, direccion: 'Hola 123' }
+}
+let client2 = {
+    name: 'Pedro',
+    information: {telefono: '123456789', email: 'pedro@pedro.com' }
+}
+
+function combineClients(client1, client2) {
+    let fullProfile = {
+        ...client1.data,
+        ...client2.information
+    }
+    return {
+        name: client1.name,
+        fullProfile
+    }
+}
+console.log(combineClients(client1, client2));
+
+//3.Crea una función actualizarPerfil que reciba dos objetos usuario y detalles. El objeto usuario tiene propiedades nombre, edad, y colorFavorito, y el objeto detalles tiene propiedades direccion y telefono. Usa el spread operator para devolver un usuario con nombre, color favorito solo si es morado, direccion y telefono de detalles, pero solo si la edad del usuario es mayor de 25. Si la edad es 25 o menor, establece valores predeterminados para direccion y telefono en el objeto resultante.
+let user = {
+    name: 'Ana',
+    age: 26,
+    favoritecolor: 'violeta',
+}
+let details = {
+    direction: 'hola 456',
+    phoneNumber: '987654321', 
+}
+function updateProfile(user, details) {
+    if (user.edad > 25) {
+        return {
+            name: user.name,
+            favoritecolor: user.favoritecolor === 'violeta' ? user.favoritecolor : undefined,
+            direction: details.direction,
+            phoneNumber: details.phoneNumber
+        };
+    } else {
+        return {
+            name: user.name,
+            direction: 'unkown',
+            phoneNumber: '000000000'
+        };
+    }
+}
+console.log(updateProfile(user, details));
+
+//4.Crea una función actualizarInfo que reciba dos objetos usuario y detalles, y un array de palabrasClave. El objeto usuario tiene propiedades nombre, edad, y colorFavorito, y el objeto detalles tiene propiedades direccion, telefono, y ocupacion. El array palabrasClave contiene una lista de palabras que pueden estar presentes en el campo colorFavorito de usuario. Usa el spread operator para actualizar el objeto usuario con direccion, telefono, y ocupacion de detalles solo si el colorFavorito de usuario está presente en palabrasClave. Si el colorFavorito no está en palabrasClave, establece valores predeterminados para direccion, telefono, y ocupacion. Devuelve el objeto usuarioActualizado.
+
+let userInfo = {
+    name: 'Carlos',
+    age: 28,
+    favoriteColor: 'azul'
+}
+
+let infoDetails = {
+    direction:'Aaaa 789',
+    phoneNumber: '123456',
+    Worker: 'Ingeniero'
+}
+
+let keyWords = ['rojo', 'verde', 'azul']
+
+function updateInfo(user, details, keyWords) {
+    if (keyWords.includes(user.favoriteColor)) {
+        return {
+            ...user,
+            direction: details.direction,
+            phoneNumber: details.phoneNumber,
+            work: details.work
+        };
+    } else {
+        return {
+            ...user,
+            direction: 'Desconocida',
+            phoneNumber: '12345678',
+            work: 'Desempleado'
+        };
+    }
+}
+
+
+
+console.log(updateInfo(userInfo, infoDetails, keyWords));
 
 
 
