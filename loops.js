@@ -2,8 +2,10 @@
 //1. Crea una función sumarHastaLimite que reciba un número límite. Usa un bucle while para sumar números consecutivos (1, 2, 3,...) hasta que la suma alcance o supere el límite. Muestra el resultado en la consola. 
 function sumarHastaLimite(limitNum){
     let i = 0 
+    let cont = 1
     while(i < limitNum){
-        i = i + 1
+        i = i + cont
+        cont = cont + 1
     }
     return i
 }
@@ -12,14 +14,16 @@ console.log(sumarHastaLimite(10))
 //2. Escribe una función contarPares que reciba un número n. Usa un bucle while para contar cuántos números pares hay entre 1 y n. Muestra el resultado en la consola. 
 function contarPares(n){
     let i = 0
+    let cont = 0
     while(i < n){
         i = i +1
         if(i%2 == 0){
-            console.log(i)
+            cont = cont + 1
         }
     }
+    return(cont)
 }
-contarPares(10)
+console.log(contarPares(10))
 
 //3. Crea una función multiplicar que reciba dos números a y b. Usa un bucle while para multiplicar a por b mediante sumas sucesivas. Muestra el resultado en la consola. 
 function multiplicar(n1, n2){
