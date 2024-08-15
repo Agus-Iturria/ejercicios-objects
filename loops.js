@@ -291,6 +291,169 @@ console.log("Cantidad de veces que le erro: " + practicarSaques());
 
 //4.Desde la terna arbitral de la AFA, el presidente Chiqui Mafia nos envía una lista con los jugadores que anotaron goles en un partido. Escribe una función llamada recuentoGoleadores que reciba una lista de jugadores que anotaron goles. Usa un bucle do while para contar cuántos jugadores ÚNICOS anotaron al menos un gol, y muestra el resultado en la consola.
 //Ej del array: let jugadoresQueAnotaron = ["Messi", "Di Maria", "Messi", "Riquelme", "Maradona"];
-let jugadoresQueAnotaron = ["Messi", "Di Maria", "Messi", "Riquelme", "Maradona"]
+let jugadoresQueAnotaron = [
+  "Messi",
+  "Di Maria",
+  "Messi",
+  "Riquelme",
+  "Maradona",
+];
 
+function recuentoGoleadores(jugadoresUnicos) {
+  let i = 0;
+  let contarJugadoresUnicos = [];
+  do {
+    if (!contarJugadoresUnicos.includes(jugadoresUnicos[i])) {
+      contarJugadoresUnicos.push(jugadoresUnicos[i]);
+    }
+    i = i + 1;
+  } while (i < jugadoresUnicos.length);
+  return contarJugadoresUnicos;
+}
+console.log(recuentoGoleadores(jugadoresQueAnotaron));
 
+//5. En un clásico Boca vs. River, se quiere analizar el rendimiento de algunos jugadores clave.
+//Tienes un objeto llamado rendimientoJugadores que almacena el nombre de cada jugador y la cantidad de kilómetros recorridos durante el partido. Crea una función analizarRendimiento que use un bucle while para recorrer el objeto y mostrar en la consola qué jugadores recorrieron más de 10 kilómetros.
+//let rendimientoJugadores = { "Enzo Pérez": 11.5, "Frank Fabra": 9.8, "Nicolás De La Cruz": 12.3, "Cristian Medina": 10.2 };
+let rendimientoJugadores = {
+  "Enzo Pérez": 11.5,
+  "Frank Fabra": 9.8,
+  "Nicolás De La Cruz": 12.3,
+  "Cristian Medina": 10.2,
+};
+
+function analizarRendimiento(jugadores) {
+  let mejorRendimiento = [];
+  let rendimiento = Object.keys(jugadores);
+  let i = 0;
+
+  do {
+    let jugador = rendimiento[i];
+    if (jugadores[jugador] > 10) {
+      mejorRendimiento.push(jugador);
+    }
+    i = i + 1;
+  } while (i < rendimiento.length);
+
+  return mejorRendimiento;
+}
+console.log(analizarRendimiento(rendimientoJugadores));
+
+//6.Durante el último Superclásico entre Boca y River, se registraron varias tarjetas amarillas y rojas. Tienes un objeto tarjetasPartido donde cada clave es el nombre del jugador y el valor es un objeto con dos propiedades: amarillas y rojas, que indican el número de tarjetas de cada tipo que recibió el jugador. Crea una función resumenTarjetas que use un bucle do while para mostrar en la consola el total de tarjetas amarillas y rojas que recibió cada jugador.
+let tarjetasPartido = {
+  "Enzo Pérez": { amarillas: 1, rojas: 0 },
+  "Frank Fabra": { amarillas: 2, rojas: 1 },
+  "Nicolás De La Cruz": { amarillas: 0, rojas: 0 },
+  "Cristian Medina": { amarillas: 1, rojas: 1 },
+  "Riki Papi": { amarillas: 2, rojas: 2 },
+};
+
+function resumenTarjetas(tarjetas) {
+  let tar = Object.keys(tarjetas);
+  let i = 0;
+  do {
+    let jugador = tar[i];
+    let { amarillas, rojas } = tarjetas[jugador];
+    console.log(`${jugador}: ${amarillas} amarillas, ${rojas} rojas`);
+    i = i + 1;
+  } while (i < tar.length);
+}
+
+resumenTarjetas(tarjetasPartido);
+
+//7.Imagina que estás desarrollando un carrito de compras para una página web. Tienes un array de objetos productos, donde cada objeto representa un producto con su nombre y precio. Escribe una función calcularTotal que recorra el array usando un bucle while y calcule el precio total de los productos en el carrito. Muestra el total en la consola.
+// Array de productos
+let productos = [
+  { nombre: "Remera", precio: 2000 },
+  { nombre: "Pantalon", precio: 3500 },
+  { nombre: "Zapas", precio: 5000 },
+  { nombre: "Gorra", precio: 1500 },
+];
+
+function calcularTotal(productos) {
+  let total = 0;
+  let i = 0;
+
+  while (i < productos.length) {
+    total += productos[i].precio;
+    i = i + 1;
+  }
+  console.log(`Total: $${total}`);
+}
+calcularTotal(productos);
+
+//8.Imagina que estás validando las entradas de un formulario en una página web. Tienes un array datosIngresados que contiene valores que el usuario ingresó. Escribe una función validarEntradas que recorra los datos usando un bucle do while para verificar que todos los campos sean válidos (por ejemplo, que no estén vacíos). Si todos los campos son válidos, muestra un mensaje en la consola indicando "Formulario válido", de lo contrario, muestra "Formulario inválido".
+let datosIngresados = ["Jose", "hola", "hola132", ""];
+
+function validarEntradas(datos) {
+  let validar = true;
+  let i = 0;
+
+  do {
+    if (datos[i] === "") {
+      validar = false;
+      return "Formulario inválido";
+    }
+    i = i + 1;
+  } while (i < datos.length);
+
+  if (validar === true) {
+    return "Formulario válido";
+  }
+}
+console.log(validarEntradas(datosIngresados));
+
+//9.Imagina que estás manejando una sección de comentarios en una página web. Tienes un array de objetos comentarios, donde cada objeto tiene un usuario y un comentario. Escribe una función mostrarComentarios que recorra el array usando un bucle while y muestre cada comentario en la consola.
+let comentariosUsuarios = [
+  { usuario: "Andres_Jorge_Carlos", comentario: "Si saco la Gun" },
+  { usuario: "Pedro", comentario: "Hola" },
+  { usuario: "Riki_Papi", comentario: "Ñao ñao amigao" },
+  { usuario: "Caigxd007", comentario: "no se" },
+];
+
+function mostrarComentarios(comentarios) {
+  let i = 0;
+  while (i < comentarios.length) {
+    let comentario = comentarios[i];
+    console.log(`${comentario.usuario} comento: ${comentario.comentario}`);
+    i = i + 1;
+  }
+}
+mostrarComentarios(comentariosUsuarios);
+
+//10.Imagina que estás creando una barra de progreso para una página web. La barra de progreso se llena a medida que se completa una tarea. Escribe una función simularProgreso que use un bucle do while para simular el avance de la barra, incrementando el progreso en un 10% en cada iteración hasta que alcance el 100%. Muestra el progreso en la consola en cada paso.
+function simularProgreso() {
+  let progreso = 0;
+  do {
+    console.log(`Cargando... ${progreso}%`);
+    progreso = progreso + 10;
+  } while (progreso < 100);
+  console.log("Listo 100%");
+}
+
+simularProgreso();
+
+//11. Imagina que estás diseñando una función de filtrado para una tienda en línea. Tienes un array de objetos productos, donde cada objeto tiene un nombre, categoría, y precio. Escribe una función filtrarPorCategoria que recorra el array usando un bucle while y devuelva un nuevo array con los productos que pertenecen a una categoría específica. Muestra los productos filtrados en la consola.
+
+let productos2 = [
+  { nombre: "La Gun", categoría: "No se", precio: 200000 },
+  { nombre: "Pantalones", categoría: "Ropa", precio: 7500 },
+  { nombre: "Zapas", categoría: "Ropa", precio: 500000 },
+  { nombre: "Hola", categoría: "Comida", precio: 1 },
+  { nombre: "Hamburguesa", categoría: "Comida", precio: 8000 },
+];
+
+function filtrarPorCategoria(productos, categoria) {
+  let productosEncontrados = [];
+  let i = 0;
+
+  while (i < productos.length) {
+    if (productos[i].categoría === categoria) {
+      productosEncontrados.push(productos[i]);
+    }
+    i = i + 1;
+  }
+  return productosEncontrados;
+}
+
+console.log(filtrarPorCategoria(productos2, "Comida"));
