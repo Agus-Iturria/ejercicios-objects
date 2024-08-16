@@ -168,7 +168,7 @@ const alumno2 = {
     { nombre: "Ingles", practicas: false },
   ],
 };
-function contarMateriasPracticas(alumno){
+function contarMateriasPracticas(alumno) {
   let contador = 0;
   for (let i = 0; i < alumno.materias.length; i = i + 1) {
     let materia = alumno.materias[i];
@@ -180,23 +180,50 @@ function contarMateriasPracticas(alumno){
       break;
     }
   }
-  return(`Materias con prácticas: ${contador}`);
+  return `Materias con prácticas: ${contador}`;
 }
-console.log(contarMateriasPracticas(alumno2))
+console.log(contarMateriasPracticas(alumno2));
 
 //9.Tienes una lista de canales de TV argentinos, y quieres saber si uno de tus canales favoritos está en esa lista. Escribe una función buscarCanalFavorito que reciba un array de canales y un array de favoritos. Usa for para recorrer los canales, continue para saltar los que no están en la lista de favoritos, y break si encuentras uno de tus canales favoritos. Muestra en la consola el nombre del canal encontrado o un mensaje indicando que no está en la lista.
 let arrayCanales = ["TN", "Encuentro", "C5N", "Telefe", "A24"];
 let canalesFavoritos = ["C5N", "Telefe", "Netflix"];
 function buscarCanalFavorito(canales, favoritos) {
-    for (let i = 0; i < canales.length; i =i + 1) {
-        let canal = canales[i];
-        if (!favoritos.includes(canal)) {
-            continue;
-        }
-        return(`Canal favorito: ${canal}`);
+  for (let i = 0; i < canales.length; i = i + 1) {
+    let canal = canales[i];
+    if (!favoritos.includes(canal)) {
+      continue;
     }
-    return 'no se encontraron canales favoritos'
+    return `Canal favorito: ${canal}`;
+  }
+  return "no se encontraron canales favoritos";
 }
-console.log(buscarCanalFavorito(arrayCanales, canalesFavoritos))
+console.log(buscarCanalFavorito(arrayCanales, canalesFavoritos));
 
+//Loops - Ejercicios basicos - For Break Continue
+//1. Crea una función que reciba un número como parámetro y genere la tabla de multiplicar para ese número, desde 1 hasta 10. La función debe imprimir los resultados en la consola en el formato adecuado.
+function tablaMultiplicar(numero) {
+  for (let i = 1; i <= 10; i = i + 1) {
+    console.log(`${numero} x ${i} = ${numero * i}`);
+  }
+}
+tablaMultiplicar(5);
 
+//2. Estás desarrollando el nuevo instagram. Decidiste agregar una función que invierte los mensajes, para que los usuarios puedan mandar mensajes ‘cifrados’, y así estar en la onda.
+//Entrada:
+//Crea una función que reciba un mensaje de texto como parámetro. El mensaje puede contener letras, números, espacios y otros caracteres.
+//Proceso:
+//1. Recorrer el mensaje de texto desde el último carácter hasta el primero’
+//2. Utilizar un bucle for para armar la nueva cadena invertida.
+//3. Asegurarte de que la función maneje bien todos los caracteres del mensaje
+//Salida:
+//La salida debe ser una nueva cadena de texto que representa el mensaje original invertido, lista para confundir a tus amigos en un asado o en la previa del partido.
+//Ejemplo de salida para la entrada "Che, ¿vamos a la cancha?": "?ahcnac al a somav¿ ,ehC".
+let mensajeParaInvertir = "Che, ¿vamos a la cancha?";
+function invertirMensaje(mensaje) {
+  let mensajeInvertido = "";
+  for (let i = mensaje.length - 1; i >= 0; i = i - 1) {
+    mensajeInvertido = mensajeInvertido + mensaje[i];
+  }
+  return mensajeInvertido;
+}
+console.log(invertirMensaje(mensajeParaInvertir));
